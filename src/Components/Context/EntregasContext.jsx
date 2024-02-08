@@ -10,7 +10,7 @@ const EntregasContext = ({ children }) => {
 
   const obtenerEntregas = async () => {
     try {
-      const response = await axios.get("https://huellitas-back-9sgs.onrender.com/api/entregas");
+      const response = await axios.get("http://localhost:8080/api/entregas");
       setEntregas(response.data);
     } catch (error) {
       console.log(error);
@@ -25,7 +25,7 @@ const EntregasContext = ({ children }) => {
 
   const registrarEntrega = async (entrega) => {
     try {
-      await axios.post("https://huellitas-back-9sgs.onrender.com/api/entrega", entrega);
+      await axios.post("http://localhost:8080/api/entrega", entrega);
 
       setEntregas([...entregas, entrega])
 
@@ -38,7 +38,7 @@ const EntregasContext = ({ children }) => {
 
   const modificarEntrega = async (entrega) => {
     try {
-      await axios.put(`https://huellitas-back-9sgs.onrender.com/api/entrega/${entrega._id}`, entrega);
+      await axios.put(`http://localhost:8080/api/entrega/${entrega._id}`, entrega);
       await obtenerEntregas();
     } catch (error) {
       console.log(error)
@@ -49,7 +49,7 @@ const EntregasContext = ({ children }) => {
 
   const eliminarEntrega = async (id) => {
     try {
-      await axios.delete(`https://huellitas-back-9sgs.onrender.com/api/entrega/${id}`);
+      await axios.delete(`http://localhost:8080/api/entrega/${id}`);
       const eliminarEntrega = entregas.filter((entrega) => entrega.id !== id);
       setEntregas(eliminarEntrega)
       await obtenerEntregas();

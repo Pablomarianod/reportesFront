@@ -1,18 +1,23 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import PaginaPrincipal from './Paginas/PaginaPrincipal/PaginaPrincipal'
-import { ContextoVentas } from './Components/Context/VentasContext';
+
 import Rutas from './Components/Rutas/Rutas';
+import Encabezado from './Components/Encabezado/Encabezado';
+import VentasContext from './Components/Context/VentasContext';
+import EntregasContext from './Components/Context/EntregasContext';
 
 const App = () => {
 
   return (
     <>
-      <ContextoVentas>
+      <VentasContext>
+        <EntregasContext>
 
-        <PaginaPrincipal />
+        <Encabezado />
         <Rutas />
+        
+        </EntregasContext>
+      </VentasContext>
 
-      </ContextoVentas>
     </>
   );
 };

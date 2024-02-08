@@ -10,7 +10,7 @@ const VentasContext = ({ children }) => {
 
   const obtenerVentas = async () => {
     try {
-      const response = await axios.get("https://huellitas-back-9sgs.onrender.com/api/ventas");
+      const response = await axios.get("http://localhost:8080/api/ventas");
       setVentas(response.data);
     } catch (error) {
       console.log(error);
@@ -25,7 +25,7 @@ const VentasContext = ({ children }) => {
 
   const registrarVenta = async (venta) => {
     try {
-      await axios.post("https://huellitas-back-9sgs.onrender.com/api/venta", venta);
+      await axios.post("http://localhost:8080/api/venta", venta);
 
       setVentas([...ventas, venta])
 
@@ -38,7 +38,7 @@ const VentasContext = ({ children }) => {
 
   const modificarVenta = async (venta) => {
     try {
-      await axios.put(`https://huellitas-back-9sgs.onrender.com/api/venta/${venta._id}`, venta);
+      await axios.put(`http://localhost:8080/api/venta/${venta._id}`, venta);
       await obtenerVentas();
     } catch (error) {
       console.log(error)
@@ -49,7 +49,7 @@ const VentasContext = ({ children }) => {
 
   const eliminarVenta = async (id) => {
     try {
-      await axios.delete(`https://huellitas-back-9sgs.onrender.com/api/venta/${id}`);
+      await axios.delete(`http://localhost:8080/api/venta/${id}`);
       const eliminarVenta = ventas.filter((venta) => venta.id !== id);
       setVentas(eliminarVenta)
       await obtenerVentas();
